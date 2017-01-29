@@ -88,7 +88,23 @@ class LinkedList {
         return this;
     }
 
-    reverse() {}
+    reverse() {
+        let node_temp = new Node();
+        let node_head = this._head;
+        let node_tail = this._tail;
+        let i = 0;
+
+        while (i < (this.length / 2)) {
+            node_temp.data = node_head.data;
+            node_head.data = node_tail.data;
+            node_tail.data = node_temp.data;
+            node_head = node_head.next;
+            node_tail = node_tail.prev;
+            i++;
+        }
+
+        return this;
+    }
 
     indexOf(data) {
         let node = this._head;
