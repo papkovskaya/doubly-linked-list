@@ -40,12 +40,18 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-        /*let node = new Node(data);
-        node.prev = this.at(index).prev;
-        node.next = this.at(index).next;
-        this.at(index).prev = node;
-        this.at(index).next = node;
-        this.length++;*/
+        let node = new Node(data);
+        let ind_node = this._head;
+        let i = 0;
+        while (i != index) {
+            ind_node = ind_node.next;
+            i++;
+        }
+        node.next = ind_node;
+        node.prev = ind_node.prev;
+        ind_node.prev.next = node;
+        ind_node.prev = node;
+        this.length++;
     }
 
     isEmpty() {
